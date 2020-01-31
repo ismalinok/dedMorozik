@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User page</title>
+    <style type="text/css">
+        body {
+            padding: 30px;
+        }
+
+        .users, .users td {
+            border: 1px solid lightgray;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>User Information:</h2>
+
+
+<table class="users">
+    <tr>
+        <td>Id</td><td th:text="${user.id}"></td>
+    </tr>
+    <tr>
+        <td>Name</td><td th:text="${user.name}"></td>
+    </tr>
+</table>
+
+
+</body>
+</html>

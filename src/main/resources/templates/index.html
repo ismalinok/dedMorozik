@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of all users</title>
+    <style type="text/css">
+        body {
+            padding: 30px;
+            font-size: 13pt;
+        }
+
+        .data, .data td {
+            border: 1px solid lightgray;
+            padding: 5px;
+        }
+
+        div.wrapper {
+            width:750px;
+        }
+        div.left_block {
+            float:left;
+            width:300px;
+        }
+        div.right_block {
+            float:right;
+            width:400px;
+        }
+        .sel {
+            font-size: 13pt;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="left_block">
+        <h3>Store <br/>(min quantity 10):</h3>
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Gift</th>
+                <th>Start quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+               <tr th:each="store : ${stores}">
+                    <td th:text="${store.gift.title}"></td>
+                    <td th:text="${store.quantity}"></td>
+                </tr>
+            </tbody>
+        </table>
+   </div>
+    <div class="right_block">
+        <h3>Children, gifts:</h3>
+        <form  id="giftform">
+             <select id ="selectuser" title="users" class="sel">
+                <th:block th:each="user : ${users}">
+                    <option th:value="${user.name}" th:text="${user.name}" ></option><!-- we can send ${user.id} as value "-->
+                </th:block>
+            </select>
+            <select id ="selectgift" title="gifts"  class="sel">
+                <th:block th:each="store : ${stores}">
+                    <option th:value="${store.gift.title}" th:text="${store.gift.title}" ></option><!-- ${store.gift.id}-->
+                </th:block>
+            </select>
+
+            <button type="submit" name="giftbtn" id="giftbtn"  class="link-button"> Send letter data</button>
+        </form>
+
+        <div id="feedback"></div>
+
+    </div>
+</div>
+<script type="text/javascript"
+        src="webjars/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
+
+
+</body>
+</html>
